@@ -1,0 +1,7 @@
+[versions]
+kotlin="1.7.20"
+ksp ="1.7.20-1.0.6"
+[libraries]
+ksp = { module =  "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp"  }
+[plugins]
+[bundles]
