@@ -9,7 +9,7 @@ sealed class UiModel {
 
     data class Content(
         val title: String,
-        val description: String
+        val subtitle: String
     ) : UiModel()
 
     data class Error(
