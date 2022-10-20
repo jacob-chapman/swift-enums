@@ -3,13 +3,14 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
     kotlin("multiplatform") version libs.versions.kotlin.get()
     id("com.google.devtools.ksp")
+    id("com.jacobchapman.swiftenums") version libs.versions.swiftEnums.get()
 }
 
 group = "com.jacobchapman"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
+swiftEnums {
+    setFilePath("${buildDir}/xcFramework", "assembleExamplesDebugXCFramework")
 }
 
 kotlin {
@@ -56,17 +57,21 @@ kotlin {
         val jvmTest by getting
         val jsMain by getting
         val jsTest by getting
+        val iosMain by getting
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
     }
 }
-
+//
 dependencies {
-//    add("kspCommonMainMetadata", project(":test-processor"))
-//    add("kspJvm", project(":test-processor"))
-//    add("kspJvmTest", project(":test-processor"))
-//    add("kspJs", project(":test-processor"))
-//    add("kspJsTest", project(":test-processor"))
-    configurations.filter { it.name.contains("ksp") }.forEach {
-        println(it.name)
-        add(it.name, project(":swift-enums-processor"))
-    }
+////    add("kspCommonMainMetadata", project(":test-processor"))
+////    add("kspJvm", project(":test-processor"))
+////    add("kspJvmTest", project(":test-processor"))
+////    add("kspJs", project(":test-processor"))
+////    add("kspJsTest", project(":test-processor"))
+//    configurations.filter { it.name.contains("ksp") }.forEach {
+//        println(it.name)
+//        add(it.name, project(":swift-enums-processor"))
+//    }
 }

@@ -2,10 +2,11 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
     kotlin("multiplatform") version libs.versions.kotlin.get()
+    id("maven-publish")
 }
 
-group = "com.jacobchapman"
-version = "1.0-SNAPSHOT"
+group = "com.jacobchapman.swiftenums"
+version = libs.versions.swiftEnums.get()
 
 repositories {
     mavenCentral()
@@ -19,8 +20,8 @@ kotlin {
                 implementation(libs.ksp)
                 implementation(project(":swift-enums-core"))
             }
-//            kotlin.srcDir("src/main/kotlin")
-//            resources.srcDir("src/main/resources")
+            kotlin.srcDir("src/main/kotlin")
+            resources.srcDir("src/main/resources")
         }
     }
 }

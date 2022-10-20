@@ -1,6 +1,9 @@
 package com.jacobchapman.swiftenums.processor
 
-import com.google.devtools.ksp.processing.*
+import com.google.devtools.ksp.processing.CodeGenerator
+import com.google.devtools.ksp.processing.Dependencies
+import com.google.devtools.ksp.processing.Resolver
+import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.jacobchapman.swiftenums.SwiftEnum
@@ -73,8 +76,3 @@ class SwiftEnumsProcessor(private val codeGenerator: CodeGenerator) : SymbolProc
     }
 }
 
-class SwiftEnumsProcessorProvider : SymbolProcessorProvider {
-    override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor {
-        return SwiftEnumsProcessor(environment.codeGenerator)
-    }
-}
