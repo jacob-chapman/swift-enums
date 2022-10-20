@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+import java.net.URI
 
 plugins {
     kotlin("multiplatform") version libs.versions.kotlin.get() apply false
@@ -10,5 +11,8 @@ allprojects {
         google()
         mavenCentral()
         mavenLocal()
+        maven {
+            url = URI("https://jitpack.io")
+        }
     }
 }

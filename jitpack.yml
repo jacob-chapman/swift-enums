@@ -1,0 +1,4 @@
+install:
+  - ./gradlew clean publishToMavenLocal
+env:
+  MYVAR: "custom environment variable"
