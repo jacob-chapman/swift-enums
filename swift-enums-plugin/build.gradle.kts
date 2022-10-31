@@ -5,14 +5,11 @@ plugins {
     alias(libs.plugins.pluginPublish)
 }
 
-group="com.jacobchapman.swiftenums"
-version = libs.versions.swiftEnums.get()
-
 
 gradlePlugin {
     plugins {
         create("swiftEnums") {
-            id = "com.jacobchapman.swiftenums"
+            id = "io.jacobchapman.swiftenums"
             implementationClass = "com.jacobchapman.swiftenums.plugin.SwiftEnumsPlugin"
         }
     }

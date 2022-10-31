@@ -5,9 +5,6 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.jacobchapman.swiftenums"
-version = libs.versions.swiftEnums.get()
-
 repositories {
     mavenCentral()
 }

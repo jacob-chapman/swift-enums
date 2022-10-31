@@ -2,7 +2,7 @@
 kotlin = "1.7.20"
 ksp = "1.7.20-1.0.6"
 pluginPublish = "1.0.0"
-swiftEnums="0.0.1-SNAPSHOT-1"
+swiftEnums="1.0.0"
 [libraries]
 ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 kspGradle = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp"}

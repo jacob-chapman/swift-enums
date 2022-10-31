@@ -3,15 +3,15 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
     kotlin("multiplatform") version libs.versions.kotlin.get()
     id("com.google.devtools.ksp")
-    id("com.jacobchapman.swiftenums") version libs.versions.swiftEnums.get()
+    id("io.jacobchapman.swiftenums") version libs.versions.swiftEnums.get()
 }
 
 group = "com.jacobchapman"
 version = "1.0-SNAPSHOT"
 
-swiftEnums {
-    setFilePath("${buildDir}/xcFramework", "assembleExamplesDebugXCFramework")
-}
+//swiftEnums {
+//    setFilePath("${buildDir}/xcFramework", "assembleExamplesDebugXCFramework")
+//}
 
 kotlin {
     jvm {
@@ -45,7 +45,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":swift-enums-core"))
+//                implementation(project(":swift-enums-core"))
             }
         }
         val commonTest by getting {

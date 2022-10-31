@@ -35,7 +35,7 @@ class SwiftEnumsPlugin : Plugin<Project> {
             extensions.create("swiftEnums", SwiftEnumsExtension::class.java)
             kotlin {
                 this.sourceSets.getByName("commonMain").dependencies {
-                    implementation("com.jacobchapman.swiftenums:swift-enums-core:0.0.1-SNAPSHOT-1")
+                    implementation("io.jacobchapman:swift-enums-core:1.0.0")
                 }
             }
 
@@ -46,7 +46,7 @@ class SwiftEnumsPlugin : Plugin<Project> {
                     configurations.filter { it.name.contains("ksp") && it.name.contains("ios", true) }.forEach {
 //                        println("[SwiftEnums] Adding Ksp: $it")
                         dependentKspTasks.add(it.name)
-                        add(it.name, "com.jacobchapman.swiftenums:swift-enums-processor:0.0.1-SNAPSHOT-1")
+                        add(it.name, "io.jacobchapman:swift-enums-processor:1.0.0")
                     }
                 }
                 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
