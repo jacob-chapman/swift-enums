@@ -22,3 +22,8 @@ kotlin {
         }
     }
 }
+
+tasks.register("release") {
+    dependsOn("publishJvmPublicationToMavenLocal")
+    dependsOn("publishKotlinMultiplatformPublicationToMavenLocal")
+}
