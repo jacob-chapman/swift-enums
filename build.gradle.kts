@@ -18,7 +18,7 @@ buildscript {
             url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
             credentials {
                 username = githubProperties["gpr.user"] as? String ?: project.findProperty("githubUser") as? String
-                password = githubProperties["gpr.user"] as? String ?: project.findProperty("githubToken") as? String
+                password = githubProperties["gpr.token"] as? String ?: project.findProperty("githubToken") as? String
             }
         }
     }
@@ -49,7 +49,7 @@ allprojects {
                     url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
                     credentials {
                         username = githubProperties["gpr.user"] as? String ?: project.findProperty("githubUser") as? String
-                        password = githubProperties["gpr.user"] as? String ?: project.findProperty("githubToken") as? String
+                        password = githubProperties["gpr.token"] as? String ?: project.findProperty("githubToken") as? String
                     }
                 }
             }
