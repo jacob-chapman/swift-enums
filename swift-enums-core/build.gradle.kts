@@ -41,5 +41,9 @@ kotlin {
         val jvmTest by getting
         val jsMain by getting
         val jsTest by getting
+        val iosMain by getting
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
     }
 }
