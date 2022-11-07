@@ -6,22 +6,6 @@ plugins {
     id("com.google.devtools.ksp") version libs.versions.ksp.get() apply false
     id("maven-publish")
 }
-buildscript {
-    repositories {
-        maven {
-            name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
-            credentials {
-                username = project.findProperty("githubUser") as? String ?: "jacob-chapman"
-                password = project.findProperty("githubToken") as? String ?: System.getProperty("TOKEN")
-            }
-        }
-    }
-    dependencies {
-        classpath("io.jacobchapman:swift-enums-plugin:0.0.11")
-    }
-}
-
 
 allprojects {
     plugins.apply("maven-publish")
