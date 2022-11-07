@@ -6,7 +6,6 @@ on:
       - develop
 
 env:
-  USER: ${{ secrets.G_USER }}
   TOKEN: ${{ secrets.G_TOKEN }}
 
 jobs:
@@ -24,12 +23,9 @@ jobs:
       - name: Configure Github Properties
         run: |
           touch ./github.properties
-          echo gpr.user="$USER" >> ./github.properties
           echo gpr.key="$TOKEN" >> ./github.properties
 
       - name: Release
 
         run: |
-          echo $USER
-          echo $TOKEN
           ./gradlew clean :swift-enums-core:release :swift-enums-processor:release :swift-enums-plugin:publishPluginMavenPublicationToGithubPackagesRepository

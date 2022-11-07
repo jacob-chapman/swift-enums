@@ -6,6 +6,6 @@ import com.google.devtools.ksp.processing.SymbolProcessorProvider
 
 public class SwiftEnumsProcessorProvider : SymbolProcessorProvider {
     override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor {
-        return SwiftEnumsProcessor(environment.codeGenerator)
+        return SwiftEnumsProcessor(environment.codeGenerator, environment.options)
     }
 }
