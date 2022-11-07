@@ -1,4 +1,4 @@
 install:
-  - ./gradlew clean publishToMavenLocal
+  - ./gradlew clean :swift-enums-core:publishToMavenLocal :swift-enums-processor:publishToMavenLocal :swift-enums-plugin:publishPluginMavenPublicationToMavenLocal
 env:
   MYVAR: "custom environment variable"

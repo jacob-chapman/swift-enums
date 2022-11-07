@@ -29,4 +29,4 @@ Next add the annotation `@SwiftEnum` to any sealed class that you want a mapper 
 Then once the `compileKotlinIos*` task is run a file is generated in the `build/generated/ksp/ios*/ios*Main/resources/EnumMappers.swift`. 
 This file can be added to your swift package or used in a ios project to map kotlin sealed classes. 
 
-See `examples` module for an example of using the annotation, and `swiftenums-ios` for a usage in swift example.
+See `examples` module for an example of using the annotation, and `swiftenums-ios`
