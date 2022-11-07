@@ -10,13 +10,14 @@ import com.jacobchapman.swiftenums.SwiftEnum
 
 private const val TAB = "    "
 
-class SwiftEnumsProcessor(private val codeGenerator: CodeGenerator) : SymbolProcessor {
+class SwiftEnumsProcessor(private val codeGenerator: CodeGenerator, private val options: Map<String, String>) : SymbolProcessor {
     override fun process(resolver: Resolver): List<KSAnnotated> {
         val symbols = resolver.getSymbolsWithAnnotation(SwiftEnum::class.qualifiedName.toString())
             .filterIsInstance<KSClassDeclaration>()
         if (!symbols.iterator().hasNext()) return emptyList()
+        val moduleName = options[OPTION_MODULE_NAME]
         // get all the subclasses
-        codeGenerator.createNewFile(Dependencies(false), "", "EnumMappers", "swift").writer().use { writer ->
+        codeGenerator.createNewFile(Dependencies(false), "", "${moduleName}EnumMappers", "swift").writer().use { writer ->
             // build the error to throw
 //            enum ToEnumError : Error {
 //                case UnknownType
@@ -73,6 +74,10 @@ class SwiftEnumsProcessor(private val codeGenerator: CodeGenerator) : SymbolProc
             }
         }
         return emptyList()
+    }
+
+    companion object {
+        const val OPTION_MODULE_NAME = "option_module_name"
     }
 }
 

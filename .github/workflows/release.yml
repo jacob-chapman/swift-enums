@@ -30,4 +30,6 @@ jobs:
       - name: Release
 
         run: |
+          echo $USER
+          echo $TOKEN
           ./gradlew clean :swift-enums-core:release :swift-enums-processor:release :swift-enums-plugin:publishPluginMavenPublicationToGithubPackagesRepository

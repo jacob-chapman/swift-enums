@@ -54,6 +54,9 @@ class SwiftEnumsPlugin : Plugin<Project> {
                         dependentKspTasks.forEach { dependsOn(it) }
                     }
                 }
+                this.extensions.findByType(com.google.devtools.ksp.gradle.KspExtension::class.java)?.let { kspExtension ->
+                    kspExtension.arg("option_module_name", project.name)
+                }
             }
         }
     }
