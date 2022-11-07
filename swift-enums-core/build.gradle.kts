@@ -50,9 +50,9 @@ kotlin {
 
 
 tasks.register("release") {
-    dependsOn("publishIosArm64PublicationToMavenLocal")
-    dependsOn("publishIosSimulatorArm64PublicationToMavenLocal")
-    dependsOn("publishJsPublicationToMavenLocal")
-    dependsOn("publishJvmPublicationToMavenLocal")
-    dependsOn("publishKotlinMultiplatformPublicationToMavenLocal")
+    dependsOn("publishIosArm64PublicationToGithubPackagesRepository")
+    dependsOn("publishIosSimulatorArm64PublicationToGithubPackagesRepository")
+    dependsOn("publishJsPublicationToGithubPackagesRepository")
+    dependsOn("publishJvmPublicationToGithubPackagesRepository")
+    dependsOn("publishKotlinMultiplatformPublicationToGithubPackagesRepository")
 }

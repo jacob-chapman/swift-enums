@@ -6,6 +6,24 @@ plugins {
     id("com.google.devtools.ksp") version libs.versions.ksp.get() apply false
     id("maven-publish")
 }
+buildscript {
+    val githubProperties = java.util.Properties()
+    try {
+        githubProperties.load(java.io.FileInputStream("github.properties"))
+    } catch (ex: Exception) {
+    }
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
+            credentials {
+                username = githubProperties["gpr.user"] as? String ?: project.findProperty("githubUser") as? String
+                password = githubProperties["gpr.user"] as? String ?: project.findProperty("githubToken") as? String
+            }
+        }
+    }
+}
+
 
 allprojects {
     plugins.apply("maven-publish")
@@ -15,6 +33,26 @@ allprojects {
         mavenLocal()
         maven {
             url = URI("https://jitpack.io")
+        }
+    }
+
+    publishing {
+        repositories {
+            val githubProperties = java.util.Properties()
+            try {
+                githubProperties.load(java.io.FileInputStream("github.properties"))
+            } catch (ex: Exception) {
+            }
+            repositories {
+                maven {
+                    name = "GithubPackages"
+                    url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
+                    credentials {
+                        username = githubProperties["gpr.user"] as? String ?: project.findProperty("githubUser") as? String
+                        password = githubProperties["gpr.user"] as? String ?: project.findProperty("githubToken") as? String
+                    }
+                }
+            }
         }
     }
 }

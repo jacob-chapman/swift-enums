@@ -24,6 +24,6 @@ kotlin {
 }
 
 tasks.register("release") {
-    dependsOn("publishJvmPublicationToMavenLocal")
-    dependsOn("publishKotlinMultiplatformPublicationToMavenLocal")
+    dependsOn("publishJvmPublicationToGithubPackagesRepository")
+    dependsOn("publishKotlinMultiplatformPublicationToGithubPackagesRepository")
 }
