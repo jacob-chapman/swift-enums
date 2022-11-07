@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
     kotlin("multiplatform") version libs.versions.kotlin.get()
     id("com.google.devtools.ksp")
-    id("io.jacobchapman.swiftenums")
+//    id("io.jacobchapman.swiftenums")
 }
 
 group = "com.jacobchapman"
