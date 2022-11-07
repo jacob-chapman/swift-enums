@@ -20,12 +20,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Configure Github Properties
-        run: |
-          touch ./github.properties
-          echo gpr.key="$TOKEN" >> ./github.properties
-
       - name: Release
-
+        env:
+          ORG_GRADLE_PROJECT_githubToken: ${{ secrets.G_TOKEN }}
         run: |
-          ./gradlew clean :swift-enums-core:release :swift-enums-processor:release :swift-enums-plugin:publishPluginMavenPublicationToGithubPackagesRepository
+          ./gradlew clean :swift-enums-core:publishAllPublicationsToGithubPackagesRepository :swift-enums-processor:publishAllPublicationsToGithubPackagesRepository :swift-enums-plugin:publishPluginMavenPublicationToGithubPackagesRepository

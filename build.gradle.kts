@@ -7,20 +7,18 @@ plugins {
     id("maven-publish")
 }
 buildscript {
-    val githubProperties = java.util.Properties()
-    try {
-        githubProperties.load(java.io.FileInputStream("github.properties"))
-    } catch (ex: Exception) {
-    }
     repositories {
         maven {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
             credentials {
                 username = project.findProperty("githubUser") as? String ?: "jacob-chapman"
-                password = githubProperties["gpr.token"] as? String ?: project.findProperty("githubToken") as? String
+                password = project.findProperty("githubToken") as? String ?: System.getProperty("TOKEN")
             }
         }
+    }
+    dependencies {
+        classpath("io.jacobchapman:swift-enums-plugin:0.0.11")
     }
 }
 
@@ -49,7 +47,7 @@ allprojects {
                     url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
                     credentials {
                         username = project.findProperty("githubUser") as? String ?: "jacob-chapman"
-                        password = githubProperties["gpr.token"] as? String ?: project.findProperty("githubToken") as? String
+                        password = project.findProperty("githubToken") as? String
                     }
                 }
             }

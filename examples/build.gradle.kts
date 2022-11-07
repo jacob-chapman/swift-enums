@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
     kotlin("multiplatform") version libs.versions.kotlin.get()
     id("com.google.devtools.ksp")
-//    id("io.jacobchapman.swiftenums")
+    id("io.jacobchapman.swiftenums")
 }
 
 group = "com.jacobchapman"
@@ -12,6 +12,18 @@ version = "1.0-SNAPSHOT"
 //swiftEnums {
 //    setFilePath("${buildDir}/xcFramework", "assembleExamplesDebugXCFramework")
 //}
+
+
+repositories {
+    maven {
+        name = "GithubPackages"
+        url = uri("https://maven.pkg.github.com/jacob-chapman/swift-enums")
+        credentials {
+            username = project.findProperty("githubUser") as? String ?: "jacob-chapman"
+            password = project.findProperty("githubToken") as? String
+        }
+    }
+}
 
 kotlin {
     jvm {
